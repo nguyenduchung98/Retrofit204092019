@@ -32,17 +32,30 @@ public class MainActivity extends AppCompatActivity {
         //Bước 3: Gọi Api và nhận dữ liệu từ trong call back
         Call<Demo1> callBackDemo1 = apiResponse.getDemo1();
 
-        callBackDemo1.enqueue(new Callback<Demo1>() {
+        Call<Demo2> callBackDemo2 =apiResponse.getDemo2();
+        callBackDemo2.enqueue(new Callback<Demo2>() {
             @Override
-            public void onResponse(Call<Demo1> call, Response<Demo1> response) {
-               Demo1 demo1 = response.body();
-                Log.d("BBB",demo1.getMonhoc());
+            public void onResponse(Call<Demo2> call, Response<Demo2> response) {
+                Demo2 demo2 = response.body();
+                Log.d("BBB",demo2.getDanhsach().get(0).getKhoahoc());
             }
 
             @Override
-            public void onFailure(Call<Demo1> call, Throwable t) {
+            public void onFailure(Call<Demo2> call, Throwable t) {
 
             }
         });
+//        callBackDemo1.enqueue(new Callback<Demo1>() {
+//            @Override
+//            public void onResponse(Call<Demo1> call, Response<Demo1> response) {
+//               Demo1 demo1 = response.body();
+//                Log.d("BBB",demo1.getMonhoc());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Demo1> call, Throwable t) {
+//
+//            }
+//        });
     }
 }
